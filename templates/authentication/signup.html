@@ -1,49 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><style>
+    *{
+        margin: 0%;
+        padding: 0%;
+        padding-top: 15px;
+        
+    }
+    
+    .form-container{
+        width: 250px;
+        height: auto;
+        padding: 40px 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 #000;
+        margin: auto;
+        align-items: center;
+        
+
+
+    }
+    ul.list{
+        list-style-type: none;
+        text-align: center;
+
+
+    }
+    ul.list li{
+        width: 250px;
+        align-items: center;
+        align-content: center;
+
+    }
+    ul.list li input{
+        width: 250px;
+        text-align: center;
+        height: auto;
+        align-items: center;
+        align-content: center;
+         
+    }
+
+    ul.list li button[type = "submit"]{
+        background-color: #4690fb;
+        color: #fff;
+        width: 250px;
+        height: auto;
+        padding: 8px 0px;
+    }
+    ul.list li a{
+        color: white;
+    }
+    body {
+    background-color: #f5683d;
+  }
+
+  form{
+      font-size: 0;
+  }
+  form input {
+    font-size: 12px;
+  }
+
+</style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <div class="form-container">
 
-    {%for message in messages%}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" >
-        <strong>Message:</strong>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
+        {%for message in messages%}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" >
+            <strong>Message:</strong>{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {%endfor%}
+
+        <ul class="list">
+            <h3>Sign up</h3>
+            <form action="/signup" method="post">
+                {% csrf_token %}
+                <li><input type="text" id="username" name="username" size="10"  placeholder="username" Required></li>
+                <li><input type="text" id="fname" name="fname" size="10" placeholder="first name" Required></li>
+                <li><input type="text" id="lname" name="lname" size="10" placeholder=" last name" Required></li>
+                <li><input type="email" id="email" name="email" size="10" placeholder="email" Required></li>
+                <li><input type="password" id="pass1" name="pass1" size="10" placeholder="Create a password" Required></li>
+                <li><input type="password" id="pass2" name="pass2" size="10" placeholder="confirm a password" Required></li>
+                <li><button type="submit">Sign Up</button></li>
+            </form>
+        </ul>
     </div>
-    {%endfor%}
-
-
-    <h3>Sign up</h3>
-    <form action="/signup" method="post">
-        {% csrf_token %}
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Create a username(only letters and numbers)" Required>
-        <br>
-        <label for="">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Enter your first name" Required>
-        <br>
-        <label for="">Last Name</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter your last name" Required>
-        <br>
-        <label for="">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" Required>
-        <br>
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Create a password" Required>
-        <br>
-        <label for="">Confirm password</label>
-        <input type="password" id="pass2" name="pass2" placeholder="confirm a password" Required>
-        <br>
-
-        <button type="submit">Sign Up</button>
-
-
-
-    </form>
 </body>
 </html>

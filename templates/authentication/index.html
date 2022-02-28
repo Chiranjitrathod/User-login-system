@@ -1,15 +1,54 @@
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'authentication/style.css' %}">
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            padding-top: 10vh;
+        }
+        
+        .form-container{
+            width: 250px;
+            height: auto;
+            padding: 20px 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 #000;
+            margin: auto;
+
+
+        }
+        ul.list{
+            list-style-type: none;
+            text-align: center;
+
+
+        }
+        ul.list li{
+            width: 250px;
+
+        }
+        ul.list li button[type = "submit"]{
+            background-color: #4690fb;
+            color: #fff;
+            width: 250px;
+            height: auto;
+            padding: 8px 0px;
+        }
+        ul.list li a{
+            color: white;
+        }
+        body {
+        background-color: #f5683d;
+      }</style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication</title>
 </head>
-<body>
+<body >
+    <div class="form-container">
     {%for message in messages%}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" >
             <strong>Message:</strong>{{ message }}
@@ -18,16 +57,17 @@
             </button>
         </div>
     {%endfor%}
-    <h3>Welcome to Our app</h3>
+    <ul class="list">
+    <li><h3>Hello,Welcome to Our Website</h3></li>
     {%if user.is_authenticated %}
-    <h3>Hello {{ fname }} </h3>
-    <h4>You're Successfully Logged in</h4>
-    <button type="submit"> <a href="/signout" >Signout</a></button>
+    <li><h3>Hello {{ fname }} </h3></li>
+    <li><h4>You're Successfully Logged in</h4></li>
+    <li><button type="submit"> <a href="/signout" >Signout</a></button></li>
     {%else%}
-    <button type="submit"> <a href="/signup" >SignUp</a></button>
-    <br>
-    <button type="submit"> <a href="/signin" >SignIn</a></button>
+    <li><button type="submit"> <a href="/signup" >SignUp</a></button></li>
+    <li><button type="submit"> <a href="/signin" >SignIn</a></button></li>
     {%endif%}
-
+</ul>  
+</div>
 </body>
 </html>
